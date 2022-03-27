@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class VerticalCard extends StatelessWidget {
   const VerticalCard({
     Key? key,
+    required this.imagen,
+    required this.title,
+    required this.content,
   }) : super(key: key);
+
+  final String imagen, title, content;
 
   //ver los parametros que falta al widget.
 
@@ -27,33 +32,33 @@ class VerticalCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ClipRRect(
-            borderRadius: BorderRadius.only(
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(5),
               topRight: Radius.circular(5),
             ),
             child: Image(
-              image: AssetImage(
-                'assets/barberia.png',
-              ),
+              image: AssetImage(imagen),
               fit: BoxFit.cover,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 3),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3),
             child: Text(
-              "Barber Shop",
-              style: TextStyle(
+              title,
+              style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
                   color: Color.fromRGBO(0, 0, 0, 1)),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 3),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 3,
+            ),
             child: Text(
-              "La única barbería de Cuba con servicio gratis",
-              style: TextStyle(
+              content,
+              style: const TextStyle(
                   fontSize: 10.5,
                   fontWeight: FontWeight.w300,
                   color: Color.fromRGBO(88, 88, 88, 1)),

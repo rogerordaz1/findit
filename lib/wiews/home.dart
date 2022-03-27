@@ -36,13 +36,36 @@ class HomePage extends StatelessWidget {
                   child: ListView(
                     physics: const BouncingScrollPhysics(),
                     children: const [
-                      HorizontalCard(),
-                      HorizontalCard(),
-                      HorizontalCard(),
-                      HorizontalCard(),
-                      HorizontalCard(),
-                      HorizontalCard(),
-                      HorizontalCard(),
+                      HorizontalCard(
+                        imagen: "assets/software.png",
+                        title: "Software Dev",
+                        content:
+                            "Desarrollo de software a la medida para cubrir la necesidad del negocio",
+                      ),
+                      HorizontalCard(
+                        imagen: "assets/payaso.png",
+                        title: "Payaso para cumpleaños",
+                        content:
+                            "Servicio de payaso para cumpleaños, contactenos y le atenderemos 24 H",
+                      ),
+                      HorizontalCard(
+                        imagen: "assets/cuarto.png",
+                        title: "Rent Room",
+                        content:
+                            "Renta de habitaciones en la ciudad de Pinar del río",
+                      ),
+                      HorizontalCard(
+                        imagen: "assets/cuarto.png",
+                        title: "Rent Room",
+                        content:
+                            "Renta de habitaciones en la ciudad de Pinar del río",
+                      ),
+                      HorizontalCard(
+                        imagen: "assets/cuarto.png",
+                        title: "Rent Room",
+                        content:
+                            "Renta de habitaciones en la ciudad de Pinar del río",
+                      ),
                     ],
                   ),
                 )
@@ -84,27 +107,49 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.only(left: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              "Hola Roger",
-              style: TextStyle(color: Colors.black),
+          children: [
+            Row(
+              children: const [
+                Text("Hola",
+                    style: TextStyle(
+                      color: Colors.black54,
+                    )),
+                SizedBox(
+                  width: 5,
+                ),
+                Text("Roger",
+                    style: TextStyle(
+                      color: Colors.blue,
+                    )),
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text(
+            const Text(
               "Encuentra los servicios cercanos",
-              style: TextStyle(color: Colors.black54, fontSize: 15),
+              style: TextStyle(color: Colors.black, fontSize: 15),
             ),
           ],
         ),
       ),
-      actions: const [
+      actions: [
         Padding(
-          padding: EdgeInsets.only(right: 25),
-          child: CircleAvatar(
-            radius: 25,
-            backgroundColor: Colors.red,
+          padding: const EdgeInsets.only(right: 25),
+          child: Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 10, color: Colors.black54, spreadRadius: 1)
+              ],
+            ),
+            child: const CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.red,
+              backgroundImage: AssetImage('assets/barberia.png'),
+            ),
           ),
         )
       ],
@@ -115,8 +160,12 @@ class HomePage extends StatelessWidget {
 class HorizontalCard extends StatelessWidget {
   const HorizontalCard({
     Key? key,
+    required this.imagen,
+    required this.title,
+    required this.content,
   }) : super(key: key);
 
+  final String imagen, title, content;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -135,13 +184,13 @@ class HorizontalCard extends StatelessWidget {
         ],
       ),
       child: Row(children: [
-        const ClipRRect(
-          borderRadius: BorderRadius.only(
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(5),
             bottomLeft: Radius.circular(5),
           ),
           child: Image(
-            image: AssetImage('assets/cuarto.png'),
+            image: AssetImage(imagen),
             fit: BoxFit.cover,
           ),
         ),
@@ -154,13 +203,12 @@ class HorizontalCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Software Dev",
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-                const Text(
-                    "Desarrollo de software a la medida para cubrir la necesidad del negocio",
-                    style:
-                        TextStyle(fontSize: 13, fontWeight: FontWeight.w300)),
+                Text(title,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w400)),
+                Text(content,
+                    style: const TextStyle(
+                        fontSize: 13, fontWeight: FontWeight.w300)),
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
@@ -210,12 +258,26 @@ class CardHorizontalSwiper extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       children: const [
-        VerticalCard(),
-        VerticalCard(),
-        VerticalCard(),
-        VerticalCard(),
-        VerticalCard(),
-        VerticalCard(),
+        VerticalCard(
+          imagen: "assets/barberia.png",
+          content: 'La única barbería de Cuba con servicio gratis',
+          title: 'Barber Shop',
+        ),
+        VerticalCard(
+          imagen: "assets/coffe.png",
+          content: 'La casa del café que está  al doblar la esquina.',
+          title: 'Cofee Bar',
+        ),
+        VerticalCard(
+          imagen: "assets/cake.png",
+          content: 'Tenemos dulces, por encargo hasta su casa...',
+          title: 'Sweet Dreams',
+        ),
+        VerticalCard(
+          imagen: "assets/barberia.png",
+          content: 'La única barbería de Cuba con servicio gratis',
+          title: 'Barber Shop',
+        ),
       ],
     );
   }
