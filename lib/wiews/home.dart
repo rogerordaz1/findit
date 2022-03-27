@@ -8,71 +8,99 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _appBar(),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: SearchInput(),
+      appBar: _appBar(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: SearchInput(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 10),
+                child: _popularesTittle(context),
+              ),
+              SizedBox(
+                height: 210,
+                width: Get.width,
+                child: const CardHorizontalSwiper(),
+              ),
+              _ultimosServiciosTittle(context),
+              SizedBox(
+                width: Get.width,
+                height: Get.height * 0.55,
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: const [
+                    HorizontalCard(
+                      imagen: "assets/software.png",
+                      title: "Software Dev",
+                      content:
+                          "Desarrollo de software a la medida para cubrir la necesidad del negocio",
+                    ),
+                    HorizontalCard(
+                      imagen: "assets/payaso.png",
+                      title: "Payaso para cumpleaños",
+                      content:
+                          "Servicio de payaso para cumpleaños, contactenos y le atenderemos 24 H",
+                    ),
+                    HorizontalCard(
+                      imagen: "assets/cuarto.png",
+                      title: "Rent Room",
+                      content:
+                          "Renta de habitaciones en la ciudad de Pinar del río",
+                    ),
+                    HorizontalCard(
+                      imagen: "assets/cuarto.png",
+                      title: "Rent Room",
+                      content:
+                          "Renta de habitaciones en la ciudad de Pinar del río",
+                    ),
+                    HorizontalCard(
+                      imagen: "assets/cuarto.png",
+                      title: "Rent Room",
+                      content:
+                          "Renta de habitaciones en la ciudad de Pinar del río",
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 10),
-                  child: _popularesTittle(context),
-                ),
-                SizedBox(
-                  height: 210,
-                  width: Get.width,
-                  child: const CardHorizontalSwiper(),
-                ),
-                _ultimosServiciosTittle(context),
-                SizedBox(
-                  width: Get.width,
-                  height: Get.height * 0.55,
-                  child: ListView(
-                    physics: const BouncingScrollPhysics(),
-                    children: const [
-                      HorizontalCard(
-                        imagen: "assets/software.png",
-                        title: "Software Dev",
-                        content:
-                            "Desarrollo de software a la medida para cubrir la necesidad del negocio",
-                      ),
-                      HorizontalCard(
-                        imagen: "assets/payaso.png",
-                        title: "Payaso para cumpleaños",
-                        content:
-                            "Servicio de payaso para cumpleaños, contactenos y le atenderemos 24 H",
-                      ),
-                      HorizontalCard(
-                        imagen: "assets/cuarto.png",
-                        title: "Rent Room",
-                        content:
-                            "Renta de habitaciones en la ciudad de Pinar del río",
-                      ),
-                      HorizontalCard(
-                        imagen: "assets/cuarto.png",
-                        title: "Rent Room",
-                        content:
-                            "Renta de habitaciones en la ciudad de Pinar del río",
-                      ),
-                      HorizontalCard(
-                        imagen: "assets/cuarto.png",
-                        title: "Rent Room",
-                        content:
-                            "Renta de habitaciones en la ciudad de Pinar del río",
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.home, size: 35, color: Colors.white),
+              onPressed: () {},
+            ),
+            const SizedBox(
+              width: 180,
+            ),
+            IconButton(
+              icon: const Icon(Icons.logout_outlined,
+                  size: 35, color: Colors.white),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        color: Colors.blue,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
+      extendBody: true,
+    );
   }
 
   Padding _ultimosServiciosTittle(BuildContext context) {
@@ -142,7 +170,9 @@ class HomePage extends StatelessWidget {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 10, color: Colors.black54, spreadRadius: 1)
+                    blurRadius: 10,
+                    color: Color.fromRGBO(0, 0, 0, 0.25),
+                    spreadRadius: 1)
               ],
             ),
             child: const CircleAvatar(
